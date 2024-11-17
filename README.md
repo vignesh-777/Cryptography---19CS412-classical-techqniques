@@ -1,23 +1,24 @@
 # Cryptography---19CS412-classical-techqniques
-# Caeser Cipher
+## EX.NO:1-Caeser Cipher
+## DATE:12-08-2024
 Caeser Cipher using with different key values
 
-# AIM:
+### AIM:
 
 To encrypt and decrypt the given message by using Ceaser Cipher encryption algorithm.
 
 
-## DESIGN STEPS:
+### DESIGN STEPS:
 
-### Step 1:
+#### Step 1:
 
 Design of Caeser Cipher algorithnm 
 
-### Step 2:
+#### Step 2:
 
 Implementation using C or pyhton code
 
-### Step 3:
+#### Step 3:
 
 1.	In Ceaser Cipher each letter in the plaintext is replaced by a letter some fixed number of positions down the alphabet.
 2.	For example, with a left shift of 3, D would be replaced by A, E would become B, and so on.
@@ -29,7 +30,7 @@ Implementation using C or pyhton code
                        Dn (x)=(x - n) mod26
 
 
-## PROGRAM:
+### PROGRAM:
 CaearCipher.
 ```py
 '''
@@ -72,33 +73,33 @@ printf("Decrypted Message: %s", message);
 return 0;
 }
 ```
-## OUTPUT:
+### OUTPUT:
 ![out1](https://github.com/user-attachments/assets/69adec1d-b8d4-4d32-a25c-c5c94079ef13)
 
-## RESULT:
+### RESULT:
 The program is executed successfully
 
 ---------------------------------
-
-# PlayFair Cipher
+## EX.NO:2-PlayFair Cipher
+## DATE:19-08-2024
 Playfair Cipher using with different key values
 
-# AIM:
+### AIM:
 
 To implement a program to encrypt a plain text and decrypt a cipher text using play fair Cipher substitution technique.
 
  
-## DESIGN STEPS:
+### DESIGN STEPS:
 
-### Step 1:
+#### Step 1:
 
 Design of PlayFair Cipher algorithnm 
 
-### Step 2:
+#### Step 2:
 
 Implementation using C or pyhton code
 
-### Step 3:
+#### Step 3:
 
 Testing algorithm with different key values. 
 
@@ -233,19 +234,20 @@ printf("Cipher text: %s\n", str);
 return 0;
 }
 ```
-## OUTPUT:
+### OUTPUT:
 ![out2](https://github.com/user-attachments/assets/cd15d6f0-a9a2-40ea-a8a1-467902494249)
 
-## RESULT:
+### RESULT:
 The program is executed successfully
 
 
 ---------------------------
 
-# Hill Cipher
+## Hill Cipher
 Hill Cipher using with different key values
 
-# AIM:
+### EX.NO:3-Hill Cipher
+### DATE:29-08-2024
 
 To develop a simple C program to implement Hill Cipher.
 
@@ -362,24 +364,25 @@ The program is executed successfully
 
 -------------------------------------------------
 
-# Vigenere Cipher
+## EX.NO:4-Vigenere Cipher
+## DATE:02-09-2024
 Vigenere Cipher using with different key values
 
-# AIM:
+### AIM:
 
 To develop a simple C program to implement Vigenere Cipher.
 
-## DESIGN STEPS:
+### DESIGN STEPS:
 
-### Step 1:
+#### Step 1:
 
 Design of Vigenere Cipher algorithnm 
 
-### Step 2:
+#### Step 2:
 
 Implementation using C or pyhton code
 
-### Step 3:
+#### Step 3:
 
 Testing algorithm with different key values. 
 ALGORITHM DESCRIPTION:
@@ -387,7 +390,7 @@ The Vigenere cipher is a method of encrypting alphabetic text by using a series 
 
 
 
-## PROGRAM:
+### PROGRAM:
 ```
 '''
 Developed By: Vignesh R
@@ -433,38 +436,39 @@ int main() {
    return 0;
 }
 ```
-## OUTPUT:
+### OUTPUT:
 ![out4](https://github.com/user-attachments/assets/6fdaccaa-9914-496f-b6de-103d9a72846c)
 
-## RESULT:
+### RESULT:
 The program is executed successfully
 
 -----------------------------------------------------------------------
 
-# Rail Fence Cipher
+## EX.NO:5-Rail Fence Cipher
+## DATE:12-09-2024
 Rail Fence Cipher using with different key values
 
-# AIM:
+### AIM:
 
 To develop a simple C program to implement Rail Fence Cipher.
 
-## DESIGN STEPS:
+### DESIGN STEPS:
 
-### Step 1:
+#### Step 1:
 
 Design of Rail Fence Cipher algorithnm 
 
-### Step 2:
+#### Step 2:
 
 Implementation using C or pyhton code
 
-### Step 3:
+#### Step 3:
 
 Testing algorithm with different key values. 
 ALGORITHM DESCRIPTION:
 In the rail fence cipher, the plaintext is written downwards and diagonally on successive "rails" of an imaginary fence, then moving up when we reach the bottom rail. When we reach the top rail, the message is written downwards again until the whole plaintext is written out. The message is then read off in rows.
 
-## PROGRAM:
+### PROGRAM:
 ```
 '''
 Developed By: Vignesh R
@@ -512,8 +516,8 @@ int main() {
     return 0;
 }
 ```
-## OUTPUT:
+### OUTPUT:
 ![out5](https://github.com/user-attachments/assets/fa730b24-9e4f-4d8c-8bd2-f9ce17c4f72f)
 
-## RESULT:
+### RESULT:
 The program is executed successfully

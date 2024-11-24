@@ -271,90 +271,54 @@ The cipher can, be adapted to an alphabet with any number of letters. All arithm
 
 
 ## PROGRAM:
-```
+```c
 '''
 Developed By: Vignesh R
 Ref No.: 212223240177
 '''
-
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
-int keymat[3][3] = { { 1, 2, 1 }, { 2, 3, 2 }, { 2, 2, 1 } };
-int invkeymat[3][3] = { { -1, 0, 1 }, { 2, -1, 0 }, { -2, 2, -1 } };
-char key[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-char* encode(char a, char b, char c) 
-{
-    char* ret = (char*)malloc(4); 
-    int x, y, z;
-    int posa = (int) a - 65;
-    int posb = (int) b - 65;
-    int posc = (int) c - 65;
-    x = posa * keymat[0][0] + posb * keymat[1][0] + posc * keymat[2][0];
-    y = posa * keymat[0][1] + posb * keymat[1][1] + posc * keymat[2][1];
-    z = posa * keymat[0][2] + posb * keymat[1][2] + posc * keymat[2][2];
-    ret[0] = key[x % 26];
-    ret[1] = key[y % 26];
-    ret[2] = key[z % 26];
-    ret[3] = '\0';
-    return ret;
-}
-char* decode(char a, char b, char c)
-{
-    char* ret = (char*)malloc(4); 
-    int x, y, z;
-    int posa = (int) a - 65;
-    int posb = (int) b - 65;
-    int posc = (int) c - 65;
 
-    x = posa * invkeymat[0][0] + posb * invkeymat[1][0] + posc * invkeymat[2][0];
-    y = posa * invkeymat[0][1] + posb * invkeymat[1][1] + posc * invkeymat[2][1];
-    z = posa * invkeymat[0][2] + posb * invkeymat[1][2] + posc * invkeymat[2][2];
-    ret[0] = key[(x % 26 < 0) ? (26 + x % 26) : (x % 26)];
-    ret[1] = key[(y % 26 < 0) ? (26 + y % 26) : (y % 26)];
-    ret[2] = key[(z % 26 < 0) ? (26 + z % 26) : (z % 26)];
+int keymat[3][3] = {{1, 2, 1}, {2, 3, 2}, {2, 2, 1}};
+int invkeymat[3][3] = {{-1, 0, 1}, {2, -1, 0}, {-2, 2, -1}};
+char key[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+char* process(char a, char b, char c, int mat[3][3]) {
+    char* ret = (char*)malloc(4);
+    int x = (a - 65) * mat[0][0] + (b - 65) * mat[1][0] + (c - 65) * mat[2][0];
+    int y = (a - 65) * mat[0][1] + (b - 65) * mat[1][1] + (c - 65) * mat[2][1];
+    int z = (a - 65) * mat[0][2] + (b - 65) * mat[1][2] + (c - 65) * mat[2][2];
+    ret[0] = key[(x % 26 + 26) % 26];
+    ret[1] = key[(y % 26 + 26) % 26];
+    ret[2] = key[(z % 26 + 26) % 26];
     ret[3] = '\0';
     return ret;
 }
-int main()
-{
-    char msg[1000];
-    char enc[1000] = "";
-    char dec[1000] = "";
-    int n;
-    strcpy(msg, "SecurityLaboratory");
-    printf("Simulation of Hill Cipher\n");
-    printf("Input message : %s\n", msg);
-    for (int i = 0; i < strlen(msg); i++)
-    {
-        msg[i] = toupper(msg[i]);
+
+void hill_cipher(char* msg, int mat[3][3], char* result) {
+    for (int i = 0; i < strlen(msg); i += 3) {
+        strcat(result, process(msg[i], msg[i + 1], msg[i + 2], mat));
     }
-    n = strlen(msg) % 3;
-    if (n != 0) {
-        for (int i = 1; i <= (3 - n); i++) {
-            strcat(msg, "X");
-        }
-    }
-    printf("Padded message : %s\n", msg);
-    for (int i = 0; i < strlen(msg); i += 3)
-    {
-        char a = msg[i];
-        char b = msg[i + 1];
-        char c = msg[i + 2];
-        strcat(enc, encode(a, b, c));
-    }
-    printf("Encoded message : %s\n", enc);
-    for (int i = 0; i < strlen(enc); i += 3)
-    {
-        char a = enc[i];
-        char b = enc[i + 1];
-        char c = enc[i + 2];
-   strcat(dec, decode(a, b, c));
-    }
-    printf("Decoded message : %s\n", dec);
+}
+
+int main() {
+    char msg[100] = "SECURITYLABORATORY", enc[100] = "", dec[100] = "";
+    printf("Simulation of Hill Cipher\nInput message: %s\n", msg);
+
+    for (int i = strlen(msg) % 3; i < 3 && i > 0; i++) strcat(msg, "X");
+    printf("Padded message: %s\n", msg);
+
+    hill_cipher(msg, keymat, enc);
+    printf("Encoded message: %s\n", enc);
+
+    hill_cipher(enc, invkeymat, dec);
+    printf("Decoded message: %s\n", dec);
+
     return 0;
 }
+
 ```
 ## OUTPUT:
 ![out3](https://github.com/user-attachments/assets/a89a8fd5-5038-409b-96f1-78de68fa17d4)
@@ -391,7 +355,7 @@ The Vigenere cipher is a method of encrypting alphabetic text by using a series 
 
 
 ### PROGRAM:
-```
+```c
 '''
 Developed By: Vignesh R
 Ref No.: 212223240177
@@ -469,7 +433,7 @@ ALGORITHM DESCRIPTION:
 In the rail fence cipher, the plaintext is written downwards and diagonally on successive "rails" of an imaginary fence, then moving up when we reach the bottom rail. When we reach the top rail, the message is written downwards again until the whole plaintext is written out. The message is then read off in rows.
 
 ### PROGRAM:
-```
+```c
 '''
 Developed By: Vignesh R
 Ref No.: 212223240177
